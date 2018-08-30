@@ -11,6 +11,9 @@
   roles:
     - python
 
+# added mongo setting
+- include: edx-east/create_mongo_users.yml
+
 - name: Configure instance(s)
   hosts: all
   become: True
@@ -42,7 +45,6 @@
       when: "'localhost' in ' '.join(EDXAPP_MEMCACHE)"
 #    - role: mongo
 #      when: "'localhost' in EDXAPP_MONGO_HOSTS"
-    - include: edx-east/create_mongo_users.yml
     - role: rabbitmq
       rabbitmq_ip: 127.0.0.1
     - role: edxapp
