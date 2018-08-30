@@ -19,16 +19,6 @@
 # login_host: 10.17.90.123
 # repl_set: prod-edx-edxapp
 
-- name: Install python pymongo for mongo_user ansible module
-  pip:
-    name: pymongo
-    state: present
-    version: "{{ pymongo_version }}"
-#    extra_args: "-i {{ COMMON_PYPI_MIRROR_URL }}"
-  tags:
-    - install
-    - install:base
-
 - name: Create mongo users
   hosts: all
   gather_facts: False
@@ -38,7 +28,7 @@
     ansible_python_interpreter: "/usr/bin/env python"
   tasks:
     - name: install python mongo module
-      pip: name=pymongo state=present
+      pip: name=pymongo state=present version="{{ pymongo_version }}"
 
     - name: create a mongodb user
       mongodb_user:
