@@ -82,8 +82,8 @@ cd /var/tmp
 git clone https://github.com/cmscom/configuration
 cd configuration
 #git checkout $CONFIGURATION_VERSION
-git checkout $CONFIGURATION_VERSION2
-#git checkout cmscom/ficus.3.201808
+#git checkout $CONFIGURATION_VERSION2
+git checkout cmscom/ficus.3.201808
 git pull
 
 ##
