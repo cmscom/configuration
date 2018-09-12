@@ -71,7 +71,8 @@ if [[ -f my-passwords.yml ]]; then
     EXTRA_VARS="-e@$(pwd)/my-passwords.yml $EXTRA_VARS"
 fi
 
-CONFIGURATION_VERSION=${CONFIGURATION_VERSION-${OPENEDX_RELEASE-master}}
+#CONFIGURATION_VERSION=${CONFIGURATION_VERSION-${OPENEDX_RELEASE-master}}
+CONFIGURATION_VERSION=${CONFIGURATION_VERSION-$OPENEDX_RELEASE}
 
 ##
 ## Clone the configuration repository and run Ansible
@@ -81,7 +82,8 @@ cd /var/tmp
 git clone https://github.com/cmscom/configuration
 cd configuration
 #git checkout $CONFIGURATION_VERSION
-git checkout $CONFIGURATION_VERSION2
+#git checkout $CONFIGURATION_VERSION2
+git checkout cmscom/ginkgo.master-terada-201808
 git pull
 
 ##
