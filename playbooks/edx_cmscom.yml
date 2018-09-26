@@ -11,6 +11,10 @@
   roles:
     - python
 
+
+# added mongo setting
+- include: edx-east/create_mongo_users.yml
+
 - name: Configure instance(s)
   hosts: all
   become: True
