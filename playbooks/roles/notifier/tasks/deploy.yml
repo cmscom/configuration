@@ -97,17 +97,18 @@
   - "install"
   - "install:configuration"
 
-- name: Syncdb
-  shell: "{{ NOTIFIER_VENV_DIR }}/bin/python manage.py syncdb"
-  args:
-    chdir: "{{ NOTIFIER_CODE_DIR }}"
-  become: true
-  become_user: "{{ notifier_user }}"
-  environment: "{{ notifier_env_vars }}"
-  when: migrate_db is defined and migrate_db|lower == "yes"
-  tags:
-    - "install"
-    - "install:configuration"
+# 2018-10-12 
+#- name: Syncdb
+#  shell: "{{ NOTIFIER_VENV_DIR }}/bin/python manage.py syncdb"
+#  args:
+#    chdir: "{{ NOTIFIER_CODE_DIR }}"
+#  become: true
+#  become_user: "{{ notifier_user }}"
+#  environment: "{{ notifier_env_vars }}"
+#  when: migrate_db is defined and migrate_db|lower == "yes"
+#  tags:
+#    - "install"
+#    - "install:configuration"
 
 - name: restart notifier-scheduler
   supervisorctl:
