@@ -47,11 +47,11 @@
 #      when: SANDBOX_ENABLE_ECOMMERCE
 #    - role: edxlocal
 #      when: EDXAPP_MYSQL_HOST == 'localhost'
-    - role: edxremote
+#    - role: edxremote
     - role: memcache
       when: "'localhost' in ' '.join(EDXAPP_MEMCACHE)"
-    - role: mongo
-      when: "'localhost' in EDXAPP_MONGO_HOSTS"
+#    - role: mongo
+#      when: "'localhost' in EDXAPP_MONGO_HOSTS"
     - role: rabbitmq
       rabbitmq_ip: 127.0.0.1
     - role: edxapp
@@ -66,7 +66,7 @@
     - analytics_api
 #    - insights
     # not ready yet: - edx_notes_api
-    - demo
+#    - demo
     - oauth_client_setup
     - oraclejdk
     - role: elasticsearch
