@@ -12,7 +12,7 @@
     - python
 
 # added mongo setting
-- include: edx-east/create_mongo_users.yml
+#- include: edx-east/create_mongo_users.yml
 
 - name: Configure instance(s)
   hosts: all
@@ -40,7 +40,7 @@
       - lms
 #    - role: edxlocal
 #      when: EDXAPP_MYSQL_HOST == 'localhost'
-    - role: edxremote
+#    - role: edxremote
     - role: memcache
       when: "'localhost' in ' '.join(EDXAPP_MEMCACHE)"
 #    - role: mongo
@@ -56,7 +56,7 @@
     - analytics_api
 #    - insights
     # not ready yet: - edx_notes_api
-    - demo
+#    - demo
     - oauth_client_setup
     - oraclejdk
     - role: elasticsearch
