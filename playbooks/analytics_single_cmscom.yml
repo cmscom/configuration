@@ -4,7 +4,7 @@
   become: True
   gather_facts: True
   vars:
-    migrate_db: "yes"
+    migrate_db: "no"
     disable_edx_services: false
     ENABLE_DATADOG: False
     ENABLE_SPLUNKFORWARDER: False
