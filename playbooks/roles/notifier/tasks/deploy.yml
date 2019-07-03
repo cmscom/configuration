@@ -97,17 +97,18 @@
   - "install"
   - "install:configuration"
 
-- name: Syncdb
-  shell: "{{ NOTIFIER_VENV_DIR }}/bin/python manage.py syncdb"
-  args:
-    chdir: "{{ NOTIFIER_CODE_DIR }}"
-  become: true
-  become_user: "{{ notifier_user }}"
-  environment: "{{ notifier_env_vars }}"
-  when: migrate_db is defined and migrate_db|lower == "yes"
-  tags:
-    - "install"
-    - "install:configuration"
+# 2018-10-12 
+#- name: Syncdb
+#  shell: "{{ NOTIFIER_VENV_DIR }}/bin/python manage.py syncdb"
+#  args:
+#    chdir: "{{ NOTIFIER_CODE_DIR }}"
+#  become: true
+#  become_user: "{{ notifier_user }}"
+#  environment: "{{ notifier_env_vars }}"
+#  when: migrate_db is defined and migrate_db|lower == "yes"
+#  tags:
+#    - "install"
+#    - "install:configuration"
 
 - name: restart notifier-scheduler
   supervisorctl:
@@ -120,13 +121,14 @@
     - "manage"
     - "manage:start"
 
-- name: restart notifier-celery-workers
-  supervisorctl:
-    name: "notifier-celery-workers"
-    state: restarted
-    config: "{{ supervisor_cfg }}"
-    supervisorctl_path: "{{ supervisor_ctl }}"
-  when: not disable_edx_services
-  tags:
-    - "manage"
-    - "manage:start"
+# cmscom@2019-03-04
+#- name: restart notifier-celery-workers
+#  supervisorctl:
+#    name: "notifier-celery-workers"
+#    state: restarted
+#    config: "{{ supervisor_cfg }}"
+#    supervisorctl_path: "{{ supervisor_ctl }}"
+#  when: not disable_edx_services
+#  tags:
+#    - "manage"
+#    - "manage:start"
