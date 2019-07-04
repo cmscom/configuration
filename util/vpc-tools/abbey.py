@@ -330,6 +330,10 @@ fi
 VIRTUAL_ENV_VERSION="15.2.0"
 PIP_VERSION="9.0.3"
 SETUPTOOLS_VERSION="39.0.1"
+<<<<<<< HEAD
+=======
+EDX_PPA="deb http://ppa.edx.org precise main"
+>>>>>>> cmscom/ginkgo.master
 EDX_PPA_KEY_SERVER="keyserver.ubuntu.com"
 EDX_PPA_KEY_ID="B41E5E3969464050"
 

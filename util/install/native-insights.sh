@@ -79,7 +79,6 @@ VERSION_VARS=(
     ECOMMERCE_VERSION
     ECOMMERCE_WORKER_VERSION
     DISCOVERY_VERSION
-    THEMES_VERSION
 )
 
 for var in ${VERSION_VARS[@]}; do
@@ -105,9 +104,8 @@ CONFIGURATION_VERSION=${CONFIGURATION_VERSION-$OPENEDX_RELEASE}
 cd /var/tmp
 git clone https://github.com/cmscom/configuration
 cd configuration
-git checkout $CONFIGURATION_VERSION
 #git checkout $CONFIGURATION_VERSION
-#git checkout cmscom/ginkgo.master-terada-201808
+git checkout cmscom/ginkgo.master-terada-201808
 git pull
 
 ##
@@ -119,7 +117,7 @@ sudo -H pip install -r requirements.txt
 ##
 ## Run the edx_sandbox.yml playbook in the configuration/playbooks directory
 ##
-cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -c local ./edx_cmscom.yml -i "localhost," $EXTRA_VARS "$@"
+cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -c local ./analytics_single_cmscom.yml -i "localhost," $EXTRA_VARS "$@"
 ansible_status=$?
 
 if [[ $ansible_status -ne 0 ]]; then

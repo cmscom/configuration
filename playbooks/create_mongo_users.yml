@@ -28,14 +28,14 @@
     ansible_python_interpreter: "/usr/bin/env python"
   tasks:
     - name: install python mongo module
-      pip: name=pymongo state=present
+      pip: name=pymongo state=present version="{{ pymongo_version }}"
 
     - name: create a mongodb user
       mongodb_user:
         database: "{{ item.database }}"
         login_user: "{{ MONGO_ADMIN_USER }}"
         login_password: "{{ MONGO_ADMIN_PASSWORD }}"
-        login_host: "{{ login_host }}"
+        login_host: "{{ MONGO_IP }}"
         name: "{{ item.user }}"
         password: "{{ item.password }}"
         roles: "{{ item.roles }}"
