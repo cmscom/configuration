@@ -1,0 +1,3 @@
+#!/bin/sh
+export OPENEDX_RELEASE=open-release/hawthorn.master
+export OPENEDX_RELEASE2=cmscom/hawthorn.master-from-ginkgo
