@@ -4,7 +4,7 @@
 # a new file just like it, with the generated values.
 
 #TARGET=${OPENEDX_RELEASE-master}
-TARGET=${OPENEDX_RELEASE}
+TARGET=${OPENEDX_RELEASE2}
 wget -q "https://raw.githubusercontent.com/cmscom/configuration/$TARGET/playbooks/sample_vars/passwords.yml" -O passwords-template.yml
 
 while IFS= read -r line; do
