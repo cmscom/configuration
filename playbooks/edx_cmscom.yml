@@ -34,6 +34,8 @@
     SANDBOX_ENABLE_INSIGHTS: false
     SANDBOX_ENABLE_RABBITMQ: true
     JOURNALS_ENABLED: false
+    # test 20191119
+    EDXAPP_MYSQL_HOST: localhost
   roles:
     - role: swapfile
       SWAPFILE_SIZE: 4GB
@@ -46,8 +48,9 @@
       - xqueue
       nginx_default_sites:
       - lms
-#    - role: edxlocal
-#      when: EDXAPP_MYSQL_HOST == 'localhost'
+# test 20191119 off to on
+    - role: edxlocal
+      when: EDXAPP_MYSQL_HOST == 'localhost'
 #    - role: edxremote
     - role: memcache
       when: "'localhost' in ' '.join(EDXAPP_MEMCACHE)"
