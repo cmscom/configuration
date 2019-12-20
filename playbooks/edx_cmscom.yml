@@ -54,8 +54,11 @@
 #    - role: edxremote
     - role: memcache
       when: "'localhost' in ' '.join(EDXAPP_MEMCACHE)"
+# 20191220 comment in for local install
 #    - role: mongo_3_2
 #      when: "'localhost' in EDXAPP_MONGO_HOSTS"
+    - role: mongo_3_2
+      when: "'localhost' in EDXAPP_MONGO_HOSTS"
     - role: rabbitmq
       rabbitmq_ip: 127.0.0.1
       when: SANDBOX_ENABLE_RABBITMQ
