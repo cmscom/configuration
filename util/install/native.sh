@@ -96,6 +96,9 @@ sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
+## added require modules. @cmscom
+sudo apt-get install -y mariadb-client
+
 ##
 ## Install system pre-requisites
 ##
@@ -147,9 +150,11 @@ CONFIGURATION_VERSION=${CONFIGURATION_VERSION-$OPENEDX_RELEASE}
 ## Clone the configuration repository and run Ansible
 ##
 cd /var/tmp
-git clone https://github.com/edx/configuration
+# git clone https://github.com/edx/configuration
+git clone https://github.com/cmscom/configuration
 cd configuration
-git checkout $CONFIGURATION_VERSION
+# git checkout $CONFIGURATION_VERSION
+git checkout ironwood.master-from-hawthorn
 git pull
 
 ##
@@ -161,8 +166,11 @@ sudo -H pip install -r requirements.txt
 ##
 ## Run the openedx_native.yml playbook in the configuration/playbooks directory
 ##
-cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -c local ./openedx_native.yml -i "localhost," $EXTRA_VARS "$@"
+# cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -c local ./openedx_native.yml -i "localhost," $EXTRA_VARS "$@"
+cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -c local ./edx_cmscom.yml -i "localhost," $EXTRA_VARS "$@"
 ansible_status=$?
+
+
 
 if [[ $ansible_status -ne 0 ]]; then
     echo " "
