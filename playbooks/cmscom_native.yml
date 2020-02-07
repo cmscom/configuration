@@ -8,6 +8,8 @@
   roles:
     - python
 
+- include: create_mongo_users.yml
+
 - name: Configure instance(s)
   hosts: all
   become: True
