@@ -154,7 +154,7 @@ cd /var/tmp
 git clone https://github.com/cmscom/configuration
 cd configuration
 # git checkout $CONFIGURATION_VERSION
-git checkout cmscom/ironwood.master-from-hawthorn
+git checkout cmscom/ironwood.master-from-hawthon-wo-db
 git pull
 
 ##
